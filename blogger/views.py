@@ -5,6 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.contrib.auth.models import User
 
+from blogger.models import Avatar
+
 class SignUpView(SuccessMessageMixin, CreateView):
   template_name = 'blogger/blogger_crear_cuenta_form.html'
   success_url = reverse_lazy('blog_login')
