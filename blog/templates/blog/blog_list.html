@@ -11,7 +11,7 @@
     {% for blog in object_list %}
     <li>
         
-        <a href="{% url 'blog_detail' blog.id %}">{{blog.titulo}}&nbsp{{blog.autor}}&nbsp{{blog.fecha_creacion}}</a>
+        <a href="{% url 'blog_detail' blog.id %}">{{blog.titulo}}&nbspAutor: {{blog.autor}}&nbsp Fecha: {{blog.fecha_creacion}}</a>
         {% if user.is_authenticated %}
           <a href="{% url 'blog_delete' blog.id %}">Borrar</a>
           <a href="{% url 'blog_update' blog.id %}">Actualizar</a>
