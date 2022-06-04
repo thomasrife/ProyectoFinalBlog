@@ -1,9 +1,11 @@
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.contrib.auth.models import User
 
-class SignUpView(CreateView):
+class SignUpView(SuccessMessageMixin, CreateView):
   template_name = 'blogger/blogger_crear_cuenta_form.html'
   success_url = reverse_lazy('blog_login')
   form_class = UserCreationForm
@@ -15,7 +17,7 @@ class BloggerProfile(DetailView):
     template_name = "blogger/blogger_detail.html"
 
 
-class BloggerUpdate(UpdateView):
+class BloggerUpdate(LoginRequiredMixin, UpdateView):
 
     model = User
     template_name = "blogger/user_form.html"

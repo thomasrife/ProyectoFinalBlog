@@ -3,7 +3,9 @@ from blog.models import BlogModel
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.views import View
 
 class BlogList(ListView):
 
@@ -15,7 +17,7 @@ class BlogDetail(DetailView):
     model = BlogModel
     template_name = "blog/blog_detail.html"
 
-class BlogCreate(CreateView):
+class BlogCreate(LoginRequiredMixin, CreateView):
 
     model = BlogModel
     success_url = reverse_lazy("blog_list")
@@ -25,16 +27,24 @@ class BlogCreate(CreateView):
         form.instance.autor = self.request.user
         return super().form_valid(form)
 
-class BlogUpdate(UpdateView):
+class BlogUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     model = BlogModel
     success_url = reverse_lazy("blog_list")
     fields = ["titulo", "sub_titulo", "cuerpo"]
 
-class BlogDelete(DeleteView):
+    def test_func(self):
+        exist = BlogModel.objects.filter(autor=self.request.user.id, id=self.kwargs['pk'])
+        return True if exist else False
+
+class BlogDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     model = BlogModel
     success_url = reverse_lazy("blog_list")
+
+    def test_func(self):
+        exist = BlogModel.objects.filter(autor=self.request.user.id, id=self.kwargs['pk'])
+        return True if exist else False
 
 class BlogLogin(LoginView):
     template_name = 'blog/blog_login.html'
@@ -43,3 +53,11 @@ class BlogLogin(LoginView):
 
 class BlogLogout(LogoutView):
     template_name = 'blog/blog_logout.html'
+
+class About(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, "blog/blog_about.html", {})
+
+    def post():
+        pass
