@@ -6,6 +6,6 @@ app_name='blogger'
 
 urlpatterns = [
     path("crear_usuario/", views.SignUpView.as_view(), name ="blogger_signup"),
-    path("perfil_usuario/<pk>/", views.BloggerProfile.as_view(), name ="blogger_profile"),
-    path("editar_usuario/<pk>/", views.BloggerUpdate.as_view(), name ="blogger_edit"),
+    path("perfil_usuario/<int:pk>", views.BloggerProfile.as_view(), name ="blogger_profile"),
+    path("editar_usuario/<int:pk>", views.BloggerUpdate.as_view(), name ="blogger_edit"),
 ]

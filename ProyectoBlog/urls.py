@@ -19,10 +19,10 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('', LoginView.as_view(template_name='index.html'), name='login'),
+    path('login/', LoginView.as_view(template_name='index.html'), name='login'),
     path('accounts/login/', LoginView.as_view(template_name='index.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('blog/', include('blog.urls'), name='blog'),
+    path('', include('blog.urls'), name='blog'),
     path('blogger/', include('blogger.urls')),
     path('admin/', admin.site.urls),
 ]

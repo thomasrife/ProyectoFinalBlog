@@ -1,11 +1,29 @@
-<a href="{% url 'blog_list' %}">Volver a Lista Blogs</a>
-<a href="{% url 'blogger_edit' user.id %}">Editar Perfil</a>
+{% extends 'components/body.html' %}
 
-<ul>
-    <li>Nombre: {{object.first_name}}<li>
-    <li>Apellido: {{object.last_name}}<li>
-    <li>Correo electronico: {{object.email}} </li>
-    <li>Nombre de Usuario: {{object.username}}</li>
-</ul>
+<!--========================= SECCIÓN LISTAR USARIOS =================================-->
+{% block titulo %} Perfil de {{user.first_name}} {% endblock %}
 
-<img height="128" src="{{ object.avatar_set.first.image.url }}" />
+{% block contenido %}
+<h2><a class="btn btn-outline-danger btn-sm" href="{% url 'blog:home' %}" role="button">👈Volver</a> PERFIL DE {{object.first_name | upper}} {{object.last_name | upper}}</h2>
+<hr>
+<div class="row">
+    <div class="col-6" style="margin-left:25%">
+        <div class="card mb-3">
+        <span class="badge bg-info">INFORMACIÓN</span>
+            <div class="card-body">
+                <h3 class="display-6 text-primary">Usuario: <b>{{object.username}}</b></h3>
+            </div>
+            <img src="#" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Nombre: {{object.first_name }}</h5>
+                <h5 class="card-title">Apellido: {{object.last_name }}</h6>
+                <h5 class="card-title">Email: {{object.email }}</h5>
+            </div>
+            <div class="card-footer text-center">
+                  <a type="button" href="{% url 'blogger:blogger_edit' user.id %}" class="btn btn-success btn-sm">Editar perfil</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

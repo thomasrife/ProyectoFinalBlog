@@ -11,20 +11,18 @@ class SignUpView(SuccessMessageMixin, CreateView):
     model = User
     template_name = 'blogger/signUp.html'
     form_class = RegristoForm
-    success_url = reverse_lazy('blog:home')
+    success_url = reverse_lazy('blogger:login')
     success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
     
 
 class BloggerProfile(DetailView):
-
     model = User
     template_name = "blogger/blogger_detail.html"
 
 
 class BloggerUpdate(LoginRequiredMixin, UpdateView):
-
     model = User
-    template_name = "blogger/user_form.html"
+    template_name = "blogger/signUp.html"
     fields = ["username", "email", "first_name", "last_name"]
 
     def get_success_url(self):

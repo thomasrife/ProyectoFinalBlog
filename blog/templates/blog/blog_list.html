@@ -16,11 +16,12 @@
       <th scope="col">DESCRIPCIÓN</th>
       <th scope="col">CONTENIDO</th>
       <th scope="col">AUTOR</th>
-      <th scope="col">PUBLICADO</th>
       <th scope="col">FECHA</th>
       <th scope="col">CATEGORÍA</th>
       <th scope="col">IMAGEN</th>
+      {% if user.is_authenticated %}
       <th scope="col">ACCIÓN</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -32,16 +33,17 @@
           <td>{{post.descripcion | striptags | truncatechars:50}}</td>
           <td>{{post.contenido | striptags | truncatechars:50}}</td>
           <td>{{post.autor}}</td>
-          <td>{{post.publicado}}</td>
           <td>{{post.fecha | date:'d/m/Y'}}</td>
           <td>{{post.categoria}}</td>
           <td><img src="{{post.imagen.url}}" alt="Imagen:{{post.titulo}}" height="100" width="150"></td>
           <td>
+            {% if user.is_authenticated %}
             <a class="btn btn-success btn-sm" href="{% url 'blog:blog_update' post.id %}" role="button"
               style="margin:3px; width:100%;">Editar</a>
 
             <a class="btn btn-danger btn-sm" href="{% url 'blog:blog_delete' post.id %}" role="button"
               style="margin:3px; width:100%">Borrar</a>
+              {% endif %}
           </td>
         </tr>
       {% endfor %}
