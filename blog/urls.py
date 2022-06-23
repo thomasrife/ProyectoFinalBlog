@@ -11,5 +11,4 @@ urlpatterns = [
     path('crear_post/', BlogCreate.as_view(), name='blog_create'),
     path('editar_post/<int:pk>', BlogUpdate.as_view(), name='blog_update'),
     path('eliminar_post/<pk>', BlogDelete.as_view(), name='blog_delete')
-    
 ]

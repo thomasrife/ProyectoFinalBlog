@@ -1,10 +1,49 @@
 {% load static %}
-<div class="row mt-5">
-    <div class="col-6" style="background-color:rgb(125, 147, 168)">
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submin" class="btn btn-info btn-lg" style="width:100%; margin-bottom: 10px;">Ingresar</button>
-        </form>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Iniciar Seción</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+<body style="background-color:#222831">
+
+    <div class="p-5 bg-light text-center"">
+        <h3 class="display-4">INICIO DE SESIÓN</h2>
+            <hr class="my-2">
+            <div class="row">
+                <div class="col-4 text-start text-bg-dark" style="margin-left:34%" >
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username" class="form-label mt-4">Nombre de usuario</label>
+                            <input type="text" name="username" class="form-control" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password" class="form-label mt-4">Contraseña</label>
+                            <input type="password" name="password" class="form-control" autocomplete="current-password" required id="id_password" placeholder="Contraseña">
+                        </div>
+                        <br>
+                        <button type="submin" class="btn btn-primary" style="width:100%; margin-bottom: 10px;">Ingresar</button>
+                    </form>
+                </div>
+            </div>
     </div>
-</div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
