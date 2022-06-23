@@ -1,0 +1,39 @@
+{% extends 'components/body.html' %}
+{% load static %}
+<!--========================== SECCIÓN HOME =========================-->
+<!--------------- Primera vista luego de iniciar sesión------------->
+{% block titulo %} Home {% endblock %}
+
+{% block contenido %}
+<div class="row my-4 text-center">
+    <h3 class="display-6"> PUBLICACIONES </h3>
+    <hr>
+    {% if object_list %}
+    
+        {% for post in object_list %}
+        <div class="col-md-4 p-4">
+            <div class="card border-info mb-3">
+                    <span class="badge bg-info">{{post.categoria | upper}}</span>
+                    <img class="card-img-top rounded-3" src="{{post.imagen.url}}" alt="Imagen sobre {{post.titulo}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{post.titulo}}</h4>
+                        <p class="card-text lead ">{{post.descripcion | striptags | truncatechars:50}} <small><b>Por: </b> <I> {{post.autor}}</I></small></p>
+                        <a href="#" type="button" class="btn btn-link"">Seguir Leyendo</a>
+                    </div>
+                    <div class=" card-footer" style="font-size:15px">
+                        <h6 class="lead">{{post.fecha}}</h6>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <h2 class="lead">Ouchh....No hay post cargados!!😬</h2>
+        <p>Contanos alguna novedad sobre el mundo IT <br>
+        <a type="button" class="btn btn-info mt-3" href="#">Crear nuevo post!!</p>
+    {% endif %}
+<!--========================== SECCIÓN PAGINACIÓN ===================================--> 
+    {% include 'components/paginator.html' %}
+    
+</div>
+{% endblock %}

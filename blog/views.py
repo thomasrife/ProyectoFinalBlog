@@ -1,63 +1,36 @@
-from django.shortcuts import render
-from blog.models import BlogModel
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.views import View
+from .models import Post
+from .forms import PostForm
+
+class Home(ListView):
+    model = Post
+    queryset = Post.objects.order_by('-fecha')
+    template_name ='home.html'
+    paginate_by = 3
 
 class BlogList(ListView):
+    model = Post
+    queryset = Post.objects.order_by('-fecha')
+    template_name='blog/blog_list.html'
+    paginate_by = 2
+    
+class BlogCreate(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'blog/blog_create.html'
+    success_url = reverse_lazy('blog:blog_list')
 
-    model = BlogModel
-    template_name = "blog/blog_list.html"
+class BlogUpdate(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'blog/blog_create.html'
+    success_url = reverse_lazy('blog:blog_list')
 
-class BlogDetail(DetailView):
-
-    model = BlogModel
-    template_name = "blog/blog_detail.html"
-
-class BlogCreate(LoginRequiredMixin, CreateView):
-
-    model = BlogModel
-    success_url = reverse_lazy("blog_list")
-    fields = ["titulo", "sub_titulo", "cuerpo"]
-
-    def form_valid(self, form):
-        form.instance.autor = self.request.user
-        return super().form_valid(form)
-
-class BlogUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-
-    model = BlogModel
-    success_url = reverse_lazy("blog_list")
-    fields = ["titulo", "sub_titulo", "cuerpo"]
-
-    def test_func(self):
-        exist = BlogModel.objects.filter(autor=self.request.user.id, id=self.kwargs['pk'])
-        return True if exist else False
-
-class BlogDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-
-    model = BlogModel
-    success_url = reverse_lazy("blog_list")
-
-    def test_func(self):
-        exist = BlogModel.objects.filter(autor=self.request.user.id, id=self.kwargs['pk'])
-        return True if exist else False
-
-class BlogLogin(LoginView):
-    template_name = 'blog/blog_login.html'
-    next_page = reverse_lazy("blog_list")
-
-
-class BlogLogout(LogoutView):
-    template_name = 'blog/blog_logout.html'
-
-class About(View):
-
-    def get(self, request, *args, **kwargs):
-        return render(request, "blog/blog_about.html", {})
-
-    def post():
-        pass
+class BlogDelete(DeleteView):
+    model = Post
+    template_name = 'blog/blog_confirm_delete.html'
+    success_url = reverse_lazy('blog:blog_list')

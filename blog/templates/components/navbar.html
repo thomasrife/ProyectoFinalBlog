@@ -1,0 +1,41 @@
+{% load static%}
+<!--========================= COMPONENTE NAVBAR ===================================-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+            aria-haspopup="true" aria-expanded="true">BLOG</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'blog:blog_create' %}">➕ Crear nuevo post </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'blog:blog_list' %}">👁️ Listar posts </a>
+            <a class="dropdown-item" href="{% url 'blog:blog_list' %}">📝 Editar posts </a>
+            <a class="dropdown-item" href="{% url 'blog:blog_list' %}">❌ Borrar posts </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'blog:home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Sobre nosotros</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-5">
+                <li class="nav-item dropdown mx-5 ">
+                    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="true">Usuario</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"> 👤Perfil </a>
+                        <a class="dropdown-item" href="#">➕ Registrar usuario</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">↩Cerrar sesión</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,11 @@
+<!--============================== COMPONENTE PAGINATOR ============================================-->
+{% load static %}
+<div role="group">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" type="button" class="btn btn-outline-primary"> 👈😃 ANTERIO</a>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" type="button" class="btn btn-outline-primary"> SIGUINTE 😃👉</a>
+    {% endif %}
+</div>

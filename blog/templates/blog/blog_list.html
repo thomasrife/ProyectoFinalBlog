@@ -1,24 +1,58 @@
-{% if user.is_authenticated %}
-  <a href="{% url 'blog_logout' %}">Salir</a>
-  <a href="{% url 'blog_create' %}">Nuevo Blog</a>
-  <a href="{% url 'blogger_profile' user.id %}">Perfil {{user.username}}</a>
-{% else %}
-  <a href="{% url 'blog_login' %}">Entrar</a>
-  <a href="{% url 'blogger_signup' %}">Crear Cuenta</a>
-  <a href="{% url 'blog_about' %}">About</a>
-{% endif %}
+{% extends 'components/body.html' %}
+{% load static %}
 
-{% if object_list %}
-    {% for blog in object_list %}
-    <li>
-        
-        <a href="{% url 'blog_detail' blog.id %}">{{blog.titulo}}&nbspAutor: {{blog.autor}}&nbsp Fecha: {{blog.fecha_creacion}}</a>
-        {% if user.is_authenticated %}
-          <a href="{% url 'blog_delete' blog.id %}">Borrar</a>
-          <a href="{% url 'blog_update' blog.id %}">Actualizar</a>
-        {% endif %}
-    </li>
-    {% endfor %}
-{% else %}
-  <h1> No hay blogs</h1>
-{% endif %}
+<!--======================== SECCIÓN LISTAR POST ===================================-->
+<!-------------Se muestra una tabla con todo los post del blog------------------------>
+{% block titulo %} Listado de Post {% endblock %}
+
+{% block contenido %}
+<h2>LISTADO DE POSTS</h2>
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">TITULO</th>
+      <th scope="col">SUBTITULO</th>
+      <th scope="col">DESCRIPCIÓN</th>
+      <th scope="col">CONTENIDO</th>
+      <th scope="col">AUTOR</th>
+      <th scope="col">PUBLICADO</th>
+      <th scope="col">FECHA</th>
+      <th scope="col">CATEGORÍA</th>
+      <th scope="col">IMAGEN</th>
+      <th scope="col">ACCIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if object_list %}
+      {% for post in object_list %}
+        <tr class="table-active">
+          <th scope="row">{{post.titulo | striptags | truncatechars:50}}</th>
+          <td>{{post.subtitulo | striptags | truncatechars:50}}</td>
+          <td>{{post.descripcion | striptags | truncatechars:50}}</td>
+          <td>{{post.contenido | striptags | truncatechars:50}}</td>
+          <td>{{post.autor}}</td>
+          <td>{{post.publicado}}</td>
+          <td>{{post.fecha | date:'d/m/Y'}}</td>
+          <td>{{post.categoria}}</td>
+          <td><img src="{{post.imagen.url}}" alt="Imagen:{{post.titulo}}" height="100" width="150"></td>
+          <td>
+            <a class="btn btn-success btn-sm" href="{% url 'blog:blog_update' post.id %}" role="button"
+              style="margin:3px; width:100%;">Editar</a>
+
+            <a class="btn btn-danger btn-sm" href="{% url 'blog:blog_delete' post.id %}" role="button"
+              style="margin:3px; width:100%">Borrar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    {% else %}
+        <h2 class="lead">Ouchh....No hay post cargados!!😬</h2>
+        <p>Contanos alguna novedad sobre el mundo IT <br> <a type="button" class="btn btn-info mt-3" href="#">Crear nuevo post!!</p>
+    {% endif %}
+  </tbody>
+</table>
+
+<!--========================== SECCIÓN PAGINACIÓN ===================================-->
+    {% include 'components/paginator.html' %}
+
+{% endblock %}

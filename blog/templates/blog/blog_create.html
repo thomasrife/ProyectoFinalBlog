@@ -1,0 +1,21 @@
+{% extends 'components/body.html' %}
+<!--Sección Formulario -->
+{% load static %}
+{% block titulo %} Crear nuevo post {% endblock %}
+
+{% block contenido %}
+<h2><a class="btn btn-outline-danger btn-sm" href="{% url 'blog:blog_list' %}" role="button">👈Volver</a> CREAR/EDITAR NUEVO POST </h2>
+
+<hr>
+<div class="container border border-info border-2 rounded-3" style="background-color:rgb(255, 255, 255); padding:30px">
+    <div class="row">
+        <div class="col-12">
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-lg btn-info" style="width:100%">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

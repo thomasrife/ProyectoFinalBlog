@@ -1,13 +1,15 @@
 from django.urls import path
-from blog import views
+# Vista Home
+from .views import BlogCreate, BlogDelete, BlogList, BlogUpdate, Home
+
+
+app_name='blog'
 
 urlpatterns = [
-    path("", views.BlogList.as_view(), name="blog_list"),
-    path("crear/", views.BlogCreate.as_view(), name="blog_create"),
-    path("detalle/<pk>/", views.BlogDetail.as_view(), name ="blog_detail"),
-    path("editar/<pk>/", views.BlogUpdate.as_view(), name ="blog_update"),
-    path("borrar/<pk>/", views.BlogDelete.as_view(), name ="blog_delete"),
-    path("entrar/", views.BlogLogin.as_view(), name="blog_login"),
-    path("salir/", views.BlogLogout.as_view(), name="blog_logout"),
-    path("about/", views.About.as_view(), name="blog_about"),
+    path('', Home.as_view(), name='home'),
+    path('listar_posts/', BlogList.as_view(), name='blog_list'),
+    path('crear_post/', BlogCreate.as_view(), name='blog_create'),
+    path('editar_post/<int:pk>', BlogUpdate.as_view(), name='blog_update'),
+    path('eliminar_post/<int:pk>', BlogDelete.as_view(), name='blog_delete')
+    
 ]
