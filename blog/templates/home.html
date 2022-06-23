@@ -17,11 +17,11 @@
                     <img class="card-img-top rounded-3" src="{{post.imagen.url}}" alt="Imagen sobre {{post.titulo}}">
                     <div class="card-body">
                         <h4 class="card-title">{{post.titulo}}</h4>
-                        <p class="card-text lead ">{{post.descripcion | striptags | truncatechars:50}} <small><b>Por: </b> <I> {{post.autor}}</I></small></p>
+                        <p class="card-text lead ">{{post.descripcion | striptags | truncatechars:50}}</p>
                         <a href="#" type="button" class="btn btn-link"">Seguir Leyendo</a>
                     </div>
                     <div class=" card-footer" style="font-size:15px">
-                        <h6 class="lead">{{post.fecha}}</h6>
+                        <h6>Por: <b>{{post.autor}}</b> - <small> {{post.fecha}}</small></h6>
                     </div>
             </div>
         </div>

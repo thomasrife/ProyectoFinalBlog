@@ -131,5 +131,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'imagenes')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #======================= REDIRECCIÓN LOGIN/LOGOUT =========================
-LOGIN_REDIRECT_URL = reverse_lazy('blog:blog_list')
+LOGIN_REDIRECT_URL = reverse_lazy('blog:home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')

@@ -1,17 +1,19 @@
-from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, UpdateView, DetailView
 from django.contrib.auth.models import User
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import CreateView, UpdateView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import RegristoForm
 from blogger.models import Avatar
 
 class SignUpView(SuccessMessageMixin, CreateView):
-  template_name = 'blogger/blogger_crear_cuenta_form.html'
-  success_url = reverse_lazy('blog_login')
-  form_class = UserCreationForm
-  success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
+    model = User
+    template_name = 'blogger/signUp.html'
+    form_class = RegristoForm
+    success_url = reverse_lazy('blog:home')
+    success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
+    
 
 class BloggerProfile(DetailView):
 

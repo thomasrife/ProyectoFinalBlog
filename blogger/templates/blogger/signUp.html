@@ -1,0 +1,50 @@
+{% extends 'components/body.html' %}
+
+{% block titulo %} Signup User {% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-6" style="background-color:rgb(231, 233, 235)">
+        <form method="post">
+            {% csrf_token %}
+            <!-- {{form.as_p}}  -->
+            <div class="form-group">
+                <label class="form-label mt-4">Usuario</label>
+                <input type="text" class="form-control" name="username" placeholder="Usuario">
+                <small class="form-text text-muted">Longitud máxima de 150 caracteres. <br> Solo puede estar formado por
+                    letras,
+                    números y los caracteres @/./+/-/_.</small>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Nombre</label>
+                <input type="text" class="form-control" nombre="first_name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Apellido</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Apellido">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="Email">
+                <small class="form-text text-muted">No compartiremos su emial con nadie más</small>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Contraseña</label>
+                <input type="password" class="form-control" name="password1" placeholder="Contraseña">
+                <small class="form-text text-muted">Su contraseña debe contener por lo menos 8
+                    caracteres</small><br>
+                <small id="emailHelp" class="form-text text-muted">Su contraseña no puede estar formada exclusivamente
+                    por números.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" name="password2" placeholder="Repita su contraseña">
+                <small id="emailHelp" class="form-text text-muted">Introduzca la misma contraseña nuevamente, para poder
+                    verificar la misma.</small>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-info btn-lg" style="width:100%; margin-bottom: 10px;">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
