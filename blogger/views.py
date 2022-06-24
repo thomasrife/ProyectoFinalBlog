@@ -5,15 +5,15 @@ from django.views.generic import CreateView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import RegristoForm
-from blogger.models import Avatar
+from .models import Avatar
 
 class SignUpView(SuccessMessageMixin, CreateView):
     model = User
     template_name = 'blogger/signUp.html'
     form_class = RegristoForm
-    success_url = reverse_lazy('blogger:login')
+    success_url = reverse_lazy('login')
     success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
-    
+
 
 class BloggerProfile(DetailView):
     model = User
@@ -22,9 +22,9 @@ class BloggerProfile(DetailView):
 
 class BloggerUpdate(LoginRequiredMixin, UpdateView):
     model = User
-    template_name = "blogger/signUp.html"
+    template_name = "blogger/user_form.html"
     fields = ["username", "email", "first_name", "last_name"]
 
     def get_success_url(self):
-      return reverse_lazy("blogger_profile", kwargs={"pk": self.request.user.id})
+      return reverse_lazy("blogger:blogger_profile", kwargs={"pk": self.request.user.id})
 

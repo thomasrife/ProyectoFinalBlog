@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from .models import Post
 from .forms import PostForm
 
+#=========================== VISTAS GENERICAS DE BLOG ==============================
 class Home(ListView):
     model = Post
     queryset = Post.objects.order_by('-fecha')
@@ -38,3 +39,6 @@ class BlogDelete(LoginRequiredMixin, DeleteView):
         # def test_fun(self):
         #     exist = Post.objects.filter( autor=self.request.user.id, id=self.kwargs['pk'])
         #     return True if exist else False
+ 
+ #======================== VISTAS GENERICA DE NOSOTROS ==========================
+ 

@@ -26,15 +26,12 @@
                     <a class="nav-link active" href="{% url 'blog:home' %}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Sobre nosotros</a>
+                    <a class="nav-link active" href="">Sobre nosotros</a>
                 </li>
             </ul>   
             <ul class="navbar-nav me-5">
                 {% if not user.is_authenticated %}
-                <li><a class="nav-link active" href="{% url 'login' %}">😎Ingresar</a></li>
+                <li><a class="nav-link active" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i> Ingresar</a></li>
                 <li><a class="nav-link active" href="{% url 'blogger:blogger_signup'%}">➕ Crear cuenta</a></li>
                 {% else %}
                 <li class="nav-item dropdown mx-5 ">

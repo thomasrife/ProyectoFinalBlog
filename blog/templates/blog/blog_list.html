@@ -8,6 +8,7 @@
 {% block contenido %}
 <h2>LISTADO DE POSTS</h2>
 <hr>
+{% if object_list %}
 <table class="table table-hover">
   <thead>
     <tr>
@@ -25,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    {% if object_list %}
+    
       {% for post in object_list %}
         <tr class="table-active">
           <th scope="row">{{post.titulo | striptags | truncatechars:50}}</th>
@@ -47,12 +48,13 @@
           </td>
         </tr>
       {% endfor %}
-    {% else %}
-        <h2 class="lead">Ouchh....No hay post cargados!!😬</h2>
-        <p>Contanos alguna novedad sobre el mundo IT <br> <a type="button" class="btn btn-info mt-3" href="#">Crear nuevo post!!</p>
-    {% endif %}
   </tbody>
 </table>
+{% else %}
+<h2 class="lead">Ouchh....No hay post cargados!!😬</h2>
+<p>Contanos alguna novedad sobre el mundo IT <br> <a type="button" class="btn btn-info mt-3"
+    href="{% url 'blog:blog_create' %}">Crear nuevo post!!</a></p>
+{% endif %}
 
 <!--========================== SECCIÓN PAGINACIÓN ===================================-->
     {% include 'components/paginator.html' %}

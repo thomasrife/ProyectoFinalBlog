@@ -1,7 +1,13 @@
-<a href="{% url 'blogger_profile' user.id %}">Volver a Profile</a>
+{% extends 'components/body.html' %}
+{% block titulo %} Editar {{user.username}} {% endblock %}
 
+{% block contenido  %}
+<h2><a class="btn btn-outline-danger btn-sm" href="{% url 'blogger:blogger_profile' user.id %}" role="button">👈Volver</a> PERFIL DE
+    {{object.first_name | upper}} {{object.last_name | upper}}</h2>
+<hr>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Guardar">
 </form>
+{% endblock %}

@@ -9,7 +9,6 @@
     <h3 class="display-6"> PUBLICACIONES </h3>
     <hr>
     {% if object_list %}
-    
         {% for post in object_list %}
         <div class="col-md-4 p-4">
             <div class="card border-info mb-3">
@@ -29,11 +28,10 @@
 
     {% else %}
         <h2 class="lead">Ouchh....No hay post cargados!!😬</h2>
-        <p>Contanos alguna novedad sobre el mundo IT <br>
-        <a type="button" class="btn btn-info mt-3" href="#">Crear nuevo post!!</p>
+        <p>Contanos alguna novedad sobre el mundo IT <br><br> <a type="button" class="btn btn-info" href="{% url 'blog:blog_create' %}">Crear nuevo post!!</a></p>
+        
     {% endif %}
 <!--========================== SECCIÓN PAGINACIÓN ===================================--> 
     {% include 'components/paginator.html' %}
-    
 </div>
 {% endblock %}

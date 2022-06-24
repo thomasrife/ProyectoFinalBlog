@@ -1,0 +1,11 @@
+{% extends 'components/body.html' %}
+{% extends 'pages/about.html'%}
+
+{% block titulo %} Sobre Nostros {% endblock %}
+
+{% block contenido %}
+<h2><a class="btn btn-outline-danger btn-sm" href="{% url 'blogger:blogger_profile' user.id %}" role="button">👈Volver</a> SOBRE NOSOTROS</h2>
+<hr>
+
+
+{% endblock %}
