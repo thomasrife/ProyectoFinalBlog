@@ -1,4 +1,5 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render
+from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView, View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Post
@@ -10,6 +11,15 @@ class Home(ListView):
     queryset = Post.objects.order_by('-fecha')
     template_name ='home.html'
     paginate_by = 2
+
+class AboutUs(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'pages/aboutUs.html')
+        
+
+class BlogDetail(DetailView):
+    model =  Post
+    template_name = 'blog/blog_post.html'
 
 class BlogList(ListView):
     model = Post
@@ -39,6 +49,3 @@ class BlogDelete(LoginRequiredMixin, DeleteView):
         # def test_fun(self):
         #     exist = Post.objects.filter( autor=self.request.user.id, id=self.kwargs['pk'])
         #     return True if exist else False
- 
- #======================== VISTAS GENERICA DE NOSOTROS ==========================
- 

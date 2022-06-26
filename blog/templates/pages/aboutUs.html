@@ -1,0 +1,63 @@
+{% extends 'components/body.html' %}
+
+{% block titulo %} Sobre Nostros {% endblock %}
+
+{% block contenido %}
+<h2><a class="btn btn-outline-danger btn-sm" href="{% url 'blog:home' %}" role="button">👈Volver</a> SOBRE NOSOTROS</h2>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <!-- =======================Presentación Sol=============================-->
+        <div class="card mb-3 border-info border-2">
+            <h2 class="card-header text-center text-primary">Sol Cantarini</h2>
+            <div class="card-body">
+                <img src="#" alt="">
+            </div>
+            <div class="card-body">
+                <h4>Te cuento un poquito sobre mi...</h4>
+                <p class="card-text lead">
+                    Vivo en Villa Carlos Paz, Córdoba, Argentina. <br>
+                    Tengo 29 años. <br>
+                    Estudio Técnico en Desarrollo de Software y acutalmente me encuentro en mi último año.🤓 <br>
+                    👩‍💻 Desde los 18 años que me interesa la programación. <br>
+                    Cuando tengo un tiempo libre me gusta estar en familia o con mis amigas y amigos. <br>
+                    Amo leer 📖, andar en bici o salir a correr💛
+                </p>
+            </div>
+            <div class="card-footer text-muted text-center">
+                <a class="btn btn-outline-dark   btn-floating m-1" href="https://github.com/cantariniSol"
+                    role="button" target="_black" style="width:20%"><i class="fab fa-github"></i></a>
+                <a class="btn btn-outline-dark  btn-floating m-1" href="https://www.linkedin.com/in/cantarini-maria-sol/"
+                    role="button" target="_black" style="width:20%"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <!--=======================================Presentación Thomi=============================-->
+        <div class="card mb-3 border-info border-2">
+            <h2 class="card-header text-center text-primary">Thomas Rifé</h4>
+            <div class="card-body">
+                <img src="#" alt="">
+            </div>
+            <div class="card-body">
+                <h4>Te cuento un poquito sobre mi...</h4>
+                <p class="card-text lead ">
+                    Soy de Buenos Aires, Córdoba, Argentina <br>
+                    Tengo 29 años. <br>
+                    Estudié Letras en la Universidad de Buenos Aires y me especilaicé en Liguistica Formal 🧑‍🎓 <br>
+                    🧑‍💻La programación me interesa hace 5 años y estudio Python para seguir desarrollando mis habilidades en el campo de NLP. <br>
+                    En mis tiempos libres me gusta leer y escribir 📚💛.
+                </p>
+            </div>
+            <div class="card-footer text-muted text-center">
+                <a class="btn btn btn-outline-dark  btn-floating m-1" href="https://github.com/thomasrife/ProyectoFinalBlog.git"
+                    role="button" target="_black" style="width:20%"><i class="fab fa-github"></i></a>
+                <a class="btn btn-outline-dark  btn-floating m-1" href="https://github.com/thomasrife"
+                    role="button" target="_black" style="width:20%"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

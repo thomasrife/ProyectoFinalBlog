@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{post.titulo}}</h4>
                         <p class="card-text lead ">{{post.descripcion | striptags | truncatechars:50}}</p>
-                        <a href="#" type="button" class="btn btn-link"">Seguir Leyendo</a>
+                        <a href="{% url 'blog:blog_detail' post.id %}" type="button" class="btn btn-link"">Seguir Leyendo</a>
                     </div>
                     <div class=" card-footer" style="font-size:15px">
                         <h6>Por: <b>{{post.autor}}</b> - <small> {{post.fecha}}</small></h6>
