@@ -31,10 +31,10 @@ El siguiente proyecto fue desarrollado con:
 - Bootstrap 5
 
 ## Pasos para ejecutar el proyecto:
--En su consola o terminal ejecute los siguiente comando
-    1. python manage.py migrate
-    2. python manage.py runserver
-    3. Luego ingrese a http://127.0.0.1:8000/
+- En su consola o terminal ejecute los siguiente comando
+    1.  python manage.py migrate
+    2.  python manage.py runserver
+    3.  Luego ingrese a http://127.0.0.1:8000/
 
 
 
