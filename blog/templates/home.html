@@ -13,7 +13,7 @@
         <div class="col-md-4 p-4">
             <div class="card border-info mb-3">
                     <span class="badge bg-info">{{post.categoria | upper}}</span>
-                    <img class="card-img-top rounded-3" src="{{post.imagen.url}}" alt="Imagen de {{post.categoria}}">
+                    <img class="card-img-top rounded-3" src="{{post.imagen.url}}" alt="Imagen de {{post.categoria}}" width="100" >
                     <div class="card-body">
                         <h4 class="card-title">{{post.titulo}}</h4>
                         <p class="card-text lead ">{{post.descripcion | striptags | truncatechars:50}}</p>

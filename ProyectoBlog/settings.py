@@ -123,7 +123,7 @@ STATIC_URL = 'static/'
 
 #==================== PATH PARA GUARDAR IMAGENES =========================
 #MEDIA_URL es la menra en que vamos acceder a esa carpeta
-MEDIA_URL = '/imagenes/'
+MEDIA_URL = 'blog/imagenes/'
 
 #MEDIA_ROOT es la carpeta que se va crear en el directorio raiz
 MEDIA_ROOT = os.path.join(BASE_DIR, 'imagenes')

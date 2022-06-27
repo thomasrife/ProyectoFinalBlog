@@ -5,7 +5,7 @@
 {% block contenido %}
 <h2>
     <a class="btn btn-outline-danger btn-sm" href="{% url 'blog:home' %}" role="button">👈Volver</a>
-    {{object.titulo}}
+    PUBLICACIÓN
 </h2>
 <hr>
 <div class="card mb-3">
@@ -13,16 +13,15 @@
     <div class="card-body">
             <h4 class="lead text-end text-muted " style="margin-left:50%">🗓{{object.fecha}}</h4>
             <h3 class="card-title">{{object.titulo}} </h3>
-        
-        <h5 class="card-subtitle text-muted">{{object.subtitulo}}</h5>
+            <h5 class="card-subtitle text-muted">{{object.subtitulo}}</h5>
     </div>
-    <img src="{{object.imagen.url}}" alt="Imagen {{object.categoria}}">
+    <img src="{{object.imagen.url}}" alt="Imagen {{object.categoria}}" width="500" style='margin-left:25%;'>
     <div class="card-body">
         <p>{{object.descripcion}}</p>
         <p class="card-text" style="font-size:20px">{{object.contenido}}</p>
     </div>
-    <div class="card-footer text-end">
-        <b>Por</b> <I>{{object.autor}}</I>
+    <div class="card-footer text-end lead">
+        <p>Por <I>{{object.autor}}</I></p>
     </div>
 </div>
 

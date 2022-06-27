@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
 # Vista Home
 from .views import  BlogDetail, BlogCreate, BlogDelete, BlogList, BlogUpdate, Home, AboutUs
 
@@ -13,4 +15,5 @@ urlpatterns = [
     path('editar_post/<int:pk>', BlogUpdate.as_view(), name='blog_update'),
     path('eliminar_post/<int:pk>', BlogDelete.as_view(), name='blog_delete'),
     path('sobre_nosotros/', AboutUs.as_view(), name='aboutUs')
-]
+    
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

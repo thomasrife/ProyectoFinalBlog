@@ -4,13 +4,13 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from .forms import RegristoForm
+from .forms import RegristroForm
 from .models import Avatar
 
 class SignUpView(SuccessMessageMixin, CreateView):
     model = User
     template_name = 'blogger/signUp.html'
-    form_class = RegristoForm
+    form_class = RegristroForm
     success_url = reverse_lazy('login')
     success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
 
