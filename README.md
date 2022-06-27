@@ -11,6 +11,9 @@
 ## Introducción:
 En el siguiente proyecto final se presenta la realización de una sitio web sobre un blog.
 Desarrollado en Python con el framework Django.
+
+## Video del Proyecto: https://www.loom.com/share/0b52b5e691244f718b2ab79f88a1499e
+
 ## Descripción del proyecto:
 Al ingresar a nuestro blog se podrá ver un muro con los distintos posts creado por los usarios registrados en la página.
 
