@@ -1,4 +1,5 @@
 {% extends 'components/body.html' %}
+{% load static %}
 
 {% block titulo %} Sobre Nostros {% endblock %}
 
@@ -11,7 +12,7 @@
         <div class="card mb-3 border-info border-2">
             <h2 class="card-header text-center text-primary">Sol Cantarini</h2>
             <div class="card-body">
-                <img src="#" alt="">
+                <img src="{% static 'img/sol.png' %}" alt="Imgen de Sol Cantarini" width="250"  style="margin-left:25%; border-radius: 100%;">
             </div>
             <div class="card-body">
                 <h4>Te cuento un poquito sobre mi...</h4>
@@ -37,7 +38,7 @@
         <div class="card mb-3 border-info border-2">
             <h2 class="card-header text-center text-primary">Thomas Rifé</h4>
             <div class="card-body">
-                <img src="#" alt="">
+                <img src="{% static 'img/thomas.png' %}" alt="Imagen de Thomas Rifé" width="250"  style="margin-left:25%; border-radius: 100%;">
             </div>
             <div class="card-body">
                 <h4>Te cuento un poquito sobre mi...</h4>
